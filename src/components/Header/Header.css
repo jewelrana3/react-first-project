@@ -1,4 +1,19 @@
 .header{
     background-color: #1C2B35;
     height:80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right:100px;
+    padding-left: 100px;
+    margin-right:10px;
+}
+nav.header a{
+    color: white;
+    margin-right: 30px;
+    text-decoration: none;
+}
+
+nav.header a:hover{
+    color: orchid;
 }
