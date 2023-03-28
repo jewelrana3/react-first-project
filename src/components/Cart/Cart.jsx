@@ -2,9 +2,10 @@ import React from 'react';
 import './Cart.css'
 
 const Cart = ({count}) => {
+    
     // const count = props.cart; option 1
     // const {count} = props; option 2
-    console.log(count)
+    
 
     let totalPriece = 0;
     let totalShipping = 0;
