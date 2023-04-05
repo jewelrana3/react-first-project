@@ -6,7 +6,7 @@ import './Shop.css'
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
-    const [count, setCount] = useState([])
+    const [cart, setCart] = useState([])
 
     useEffect(() => {
         fetch('products.json')
@@ -29,16 +29,16 @@ const Shop = () => {
            
         }
         // step set cart
-        setCount(saveCart)
+        setCart(saveCart)
     }, [products])
 
     const handlerAddBtn = (product) => {
-        const newNumber = [...count, product];
-        setCount(newNumber);
+        const newNumber = [...cart, product];
+        setCart(newNumber);
         addToDb(product.id)
     }
     return (
-        <div className='shop'>
+        <div className='shop-container'>
             <div className="products-container">
                 {
                     products.map(product => <Shoe
@@ -48,8 +48,8 @@ const Shop = () => {
                     ></Shoe>)
                 }
             </div>
-            <div className="shop-container">
-                <Cart count={count}></Cart>
+            <div className="cart-container">
+                <Cart cart={cart}></Cart>
             </div>
         </div>
     );

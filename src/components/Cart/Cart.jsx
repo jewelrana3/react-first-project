@@ -1,7 +1,7 @@
 import React from 'react';
 import './Cart.css'
 
-const Cart = ({count}) => {
+const Cart = ({cart}) => {
     
     // const count = props.cart; option 1
     // const {count} = props; option 2
@@ -10,7 +10,7 @@ const Cart = ({count}) => {
     let totalPriece = 0;
     let quantity = 0;
     let totalShipping = 0;
-    for(const product of count){
+    for(const product of cart){
         if(product.quantity === 0){
             product.quantity = 1;
         }
