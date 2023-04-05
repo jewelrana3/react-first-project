@@ -15,7 +15,8 @@ for(const id in shoppingCart){
         addCart.quantity = quantity;
         saveCart.push(addCart)
     }
-    return saveCart;
+    
 }
+return saveCart;
 }
 export default loaderProduct;
