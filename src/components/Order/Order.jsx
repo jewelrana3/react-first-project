@@ -1,24 +1,31 @@
 import React, { useState } from 'react';
 import Cart from '../Cart/Cart';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import Reviewitem from '../Reviitem/Reviewitem';
 import './Order.css'
+import { deleteShoppingCart, removeFromDb } from '../../utilities/fakedb';
 
 const Order = () => {
     const savedCart = useLoaderData();
 
     const [cart,setCart] = useState(savedCart);
+   
     const handleRemoveFromBuutton=(id)=>{
-        const remaing = cart.filter(product => product.id !== id);
-        setCart(remaing);
-        console.log(id)
+        const remaining = cart.filter(product => product.id !== id);
+        setCart(remaining);
+        removeFromDb(id);
+    }
+
+    const clearCart=()=>{
+        setCart([])
+        deleteShoppingCart();
     }
 
     return (
         <div className='shop-container'>
             <div className='review-container'>
                 {
-                    savedCart.map(product => <Reviewitem
+                    cart.map(product => <Reviewitem
                     key={product.id}
                     product={product}
                     handleRemoveFromBuutton={handleRemoveFromBuutton}
@@ -26,7 +33,14 @@ const Order = () => {
                 }
             </div>
             <div className='savedCart-container'>
-                <Cart cart={savedCart}> </Cart>
+                <Cart 
+                cart={cart}
+                clearCart={clearCart}
+                > 
+               <Link className='cheak' to="/cheakout">
+                    <button className='prosed-btn'>Prosed Cheak</button>
+               </Link>
+                </Cart>
             </div>
         </div>
     );

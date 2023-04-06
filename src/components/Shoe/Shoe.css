@@ -1,5 +1,5 @@
 .product {
-    width:250px;
+    width:210px;
     height: 510px;
     border-radius: 8px;
     border: 1px solid black;
@@ -8,7 +8,7 @@
 
 .product img {
     height: 286px;
-    width: 240px;
+    width: 197px;
     border-radius: 8px;
     margin: 7px;
 }

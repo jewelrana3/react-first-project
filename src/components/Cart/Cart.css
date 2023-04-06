@@ -9,3 +9,11 @@
 .order{
    
 }
+.clear-cart{
+    background-color: red;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px auto;
+    align-items: center;
+}
