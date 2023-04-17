@@ -15,6 +15,7 @@ import loaderProduct from './loaders/loaderProduct';
 import CheakOut from './components/CheakOut/CheakOut';
 import SignUp from './components/SignUp/SignUp';
 import AuthProvider from './components/Providers/AuthProvider';
+import PrivateRouter from './router/PrivateRouter';
 
 
 const router = createBrowserRouter([
@@ -28,7 +29,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/cheakout',
-        element: <CheakOut></CheakOut>
+        element: <PrivateRouter><CheakOut></CheakOut></PrivateRouter>
       },
       {
         path: '/order',

@@ -1,10 +1,15 @@
 import React, { useContext } from 'react';
 import './Login.css'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProvider';
+
+
 
 const Login = () => {
     const {signIn} = useContext(AuthContext)
+    const Navigate = useNavigate()
+    const location = useLocation()
+    console.log(location)
     const handleLogin=event=>{
         event.preventDefault();
       
@@ -19,6 +24,7 @@ const Login = () => {
             const log = result.user;
             console.log(log)
             form.reset()
+            Navigate('/')
         }).catch(error=>{
             setError(error.message)
         })
@@ -29,11 +35,11 @@ const Login = () => {
             <form onSubmit={handleLogin}>
                 <div className='form-control'>
                     <label htmlFor="">Email</label>
-                    <input type="email" name="email" id="" required/>
+                    <input type="email" name="email" id="f" required/>
                 </div>
                 <div className='form-control'>
                     <label htmlFor="password">Password</label>
-                    <input type="password" name="password" id="" required/>
+                    <input type="password" name="password" id="d" required/>
                 </div>
             <input className='submit-btn' type="submit" value="Login" />
             </form>

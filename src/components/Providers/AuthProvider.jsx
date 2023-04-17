@@ -8,6 +8,7 @@ export const AuthContext = createContext(null)
 const AuthProvider = ({children}) => {
 
     const [user,setUser] = useState(null)
+    const [loading,setLoading] = useState(true)
 
     const createUser = (email,password)=>{
      return createUserWithEmailAndPassword(auth,email,password)
@@ -17,13 +18,14 @@ const AuthProvider = ({children}) => {
         return signInWithEmailAndPassword(auth,email,password)
     }
 
-    const logOut = (auth)=>{
-        return signOut;
+    const logOut = ()=>{
+        return signOut(auth);
     }
     
     useEffect(()=>{
        const unsubacribe =  onAuthStateChanged(auth,currentUser =>{
             setUser(currentUser)
+            setLoading(false)
         });
         // stop unobvers unmounting
         return ()=>{
@@ -32,6 +34,7 @@ const AuthProvider = ({children}) => {
     },[])
     const info = {
         user,
+        loading,
         createUser,
         signIn,
         logOut
