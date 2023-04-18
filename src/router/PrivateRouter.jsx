@@ -7,13 +7,14 @@ const PrivateRouter = ({children}) => {
     const location = useLocation();
     console.log(location)
     
+    
     if(loading){
         return <div>Loading...</div>
     }
     if(user){
         return children;
     }
-    return <Navigate to='/login'></Navigate>
+    return <Navigate to='/login' state={{from: location}} replace></Navigate>
         
 };
 
